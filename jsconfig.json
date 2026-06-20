@@ -1,0 +1,7 @@
+//This applies IntelliSense to all files in the project, so you don't need the /// <reference> line in every spec.
+
+{
+  "compilerOptions": {
+    "types": ["cypress"]
+  }
+}
