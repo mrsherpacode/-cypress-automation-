@@ -5,7 +5,7 @@ describe("Regestration functionality", () => {
     cy.visit("https://parabank.parasoft.com/parabank");
   });
 
-  it("should be able to enter all the details and submit the form", () => {
+  it("should be able to see the error message when try to recreate the same user", () => {
     cy.get("#loginPanel > :nth-child(3) > a").click();
     cy.get('input[id="customer.firstName"]').type("sherpa");
     cy.get('input[id="customer.lastName"]').type("sherpa");
@@ -19,5 +19,9 @@ describe("Regestration functionality", () => {
     cy.get('input[id="customer.password"]').type(111);
     cy.get("#repeatedPassword").type(111);
     cy.get('[colspan="2"] > .button').click();
+    cy.get("span[id='customer.username.errors']").should(
+      "have.text",
+      "This username already exists.",
+    );
   });
 });
